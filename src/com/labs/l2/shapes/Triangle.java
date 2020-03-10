@@ -47,8 +47,8 @@ public class Triangle implements Polygon {
         return rotAngle;
     }
 
-    float sideA;
-    float sideB;
-    float sideC;
-    int rotAngle;
+    private float sideA;
+    private float sideB;
+    private float sideC;
+    private int rotAngle;
 }

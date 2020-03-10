@@ -3,7 +3,7 @@ package com.labs.l1;
 import java.math.BigInteger;
 import java.util.Scanner;
 
-public class L1 {
+public class Main {
     public static void main(String[] args) {
         System.out.println("INFO: a prime number is a natural number greater than 1 that cannot be formed " +
                 "by multiplying two smaller natural numbers.");

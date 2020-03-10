@@ -36,7 +36,7 @@ public class Rectangle implements Polygon {
         return 2 * sideA + 2 * sideB;
     }
 
-    float sideA;
-    float sideB;
-    int rotAngle;
+    private float sideA;
+    private float sideB;
+    private int rotAngle;
 }
