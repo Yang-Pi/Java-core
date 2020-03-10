@@ -31,7 +31,8 @@ public class Main {
         for (int i = 0; i < nIter; ++i) {
             shapes[i] = new Circle(i + (float) 0.5);
             shapes[i + nIter] = new Rectangle(i + 2, i + 3, i * 9);
-            shapes[i + 2 * nIter] = new Triangle(new Point(i, i), new Point(i + nIter, i), new Point(i, i + i * nIter - 1), i * 10);
+            shapes[i + 2 * nIter] = new Triangle(new Point(i, i), new Point(i + nIter, i),
+                    new Point(i, i + i * nIter - 1), i * 10);
         }
         for (int i = 3 * nIter; i < N_SHAPES; ++i) {
             shapes[i] = new Circle(i - 7);
