@@ -48,16 +48,16 @@ public class Main {
             num2 = tmp;
         }
 
-        if (!Algorithms.countByBruteForce(num1, num2)) {
+        /*if (!Algorithms.countByBruteForce(num1, num2)) {
+            System.out.print("No prime numbers in the interval.");
+        }*/
+
+        if (!Algorithms.countBySieve(num1, num2)) {
             System.out.print("No prime numbers in the interval.");
         }
 
-        /*if (!Algorithms.countBySieve(num1, num2)) {
+        if (!Algorithms.countByFermatPrimalityTest(num1, num2)) {
             System.out.print("No prime numbers in the interval.");
-        }*/
-
-        /*if (!Algorithms.countByFermatPrimalityTest(num1, num2)) {
-            System.out.print("No prime numbers in the interval.");
-        }*/
+        }
     }
 }

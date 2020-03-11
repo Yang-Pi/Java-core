@@ -15,6 +15,11 @@ package com.labs.l2.shapes;
  * @see <a href="https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B5%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA">Треугольник</a>
  */
 public class Triangle implements Polygon {
+    private float sideA;
+    private float sideB;
+    private float sideC;
+    private int rotAngle;
+
     public Triangle(Point pA, Point pB, Point pC, int rotAngle) {
         //here we need special method isConvex() for checking
         // existence of figure by these coordinates
@@ -46,9 +51,4 @@ public class Triangle implements Polygon {
     public int getRotation() {
         return rotAngle;
     }
-
-    private float sideA;
-    private float sideB;
-    private float sideC;
-    private int rotAngle;
 }
