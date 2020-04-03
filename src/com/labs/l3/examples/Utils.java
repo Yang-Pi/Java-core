@@ -1,4 +1,4 @@
-package com.labs.l3.examples.daemon;
+package com.labs.l3.examples;
 
 public class Utils {
     public static void pause(final int timeMillis) {

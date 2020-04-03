@@ -1,5 +1,6 @@
 package com.labs.l3.examples.daemon;
 
+import com.labs.l3.examples.Utils;
 import java.util.Random;
 
 public class Daemon {
