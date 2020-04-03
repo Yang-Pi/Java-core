@@ -1,5 +1,7 @@
 package com.labs.l3.examples.worker;
 
+import com.labs.l3.examples.blockingqueue.BlockingQueue;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
