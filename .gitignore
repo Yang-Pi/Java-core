@@ -1,4 +1,3 @@
-L*/out
+/out
 *.iml
-L*/.idea
-.idea
+/.idea
