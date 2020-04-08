@@ -11,11 +11,5 @@ public class Student extends EduObject{
 
     @Override
     public void run() {
-        for (Robot robot : ExamRoom.getRobotsList()) {
-            if (getSubject().equals(robot.getSubject())) {
-                robot.run();
-                break;
-            }
-        }
     }
 }

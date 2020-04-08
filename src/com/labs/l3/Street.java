@@ -23,7 +23,7 @@ public class Street implements Runnable{
 
             System.out.println("New smoking student learn " + genStudent.getSubject()
                     + " and has " + genStudent.getTasksCount() + " tasks");
-            Utils.pause(500 + Utils.generateInt(1000));
+            Utils.pause(Utils.generateInt(1000));
         }
     }
 
