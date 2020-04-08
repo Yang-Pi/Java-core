@@ -2,6 +2,10 @@ package com.labs.l3;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -11,6 +15,7 @@ public class ExamRoom implements Runnable{
     static final int ROBOT_SPEED = 5;
     static private List<Robot> _robots = new LinkedList<Robot>();
     static private Student _student;
+    static private ExecutorService service = (ThreadPoolExecutor) Executors.newCachedThreadPool();
 
     static private Lock lock = new ReentrantLock();
 
@@ -26,11 +31,11 @@ public class ExamRoom implements Runnable{
             lock.lock();
             try {
                 _student = ClassRoom.getStudent();
-                if (!_student.getSubject().equals("No subject")) {
-                    _student.run();
-                }
             } finally {
                 lock.unlock();
+            }
+            if (!_student.getSubject().equals("No subject")) {
+                service.execute(_student);
             }
         }
     }
