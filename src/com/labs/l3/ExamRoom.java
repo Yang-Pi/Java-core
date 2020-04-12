@@ -37,11 +37,12 @@ public class ExamRoom implements Runnable{
                 for (Robot robot : _robots) {
                     if (_student.getSubject().equals(robot.getSubject())) {
                         if (!_student.getSubject().equals("No subject")) {
-                            robot.setCountRobotWorkTasks(_student.getTasksCount());
+                            robot.setCountRobotWorkTasks(_student.getTasksCount()); //there thread will be waiting if the robot is busy
                             service.execute(robot);
                             synchronized (_nStudentsInRoom) {
                                 ++_nStudentsInRoom;
                             }
+                            break;
                         }
                     }
                 }
