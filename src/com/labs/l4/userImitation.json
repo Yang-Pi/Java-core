@@ -1,0 +1,22 @@
+[
+	{
+		"commandName" : "/add",
+		"commandInfo" : "apple 5"
+	},
+	{
+		"commandName" : "/add",
+		"commandInfo" : "banana 3"
+	},
+	{
+		"commandName" : "/add",
+		"commandInfo" : "watermelon 8"
+	},
+	{
+		"commandName" : "/delete",
+		"commandInfo" : "apple"
+	},
+	{
+		"commandName" : "/show_all",
+		"commandInfo" : ""
+	}
+]

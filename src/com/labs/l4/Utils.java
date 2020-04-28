@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Utils {
-    public static void executeCommand(Connection connection, ArrayList<String> commandInfo) throws SQLException {
+    public static void executeCommand(Connection connection, ArrayList<String> commandInfo, boolean isPrinting) throws SQLException {
         switch (commandInfo.get(0)) {
             case "add": {
                 if (commandInfo.size() == 3) {
@@ -14,13 +14,19 @@ public class Utils {
                     try {
                         int price = Integer.parseInt(commandInfo.get(2));
                         int currentId = JDBCUtils.addProduct(connection, name, price);
-                        System.out.println("Product has added");
+                        if (isPrinting) {
+                            System.out.println("Product has added");
+                        }
                     } catch (Exception e) {
-                        System.out.println("Wrong command");
+                        if (isPrinting) {
+                            System.out.println("Wrong command");
+                        }
                     }
                 }
                 else {
-                    System.out.println("Not enough arguments");
+                    if (isPrinting) {
+                        System.out.println("Not enough arguments");
+                    }
                 }
                 break;
             }
@@ -29,10 +35,14 @@ public class Utils {
                 String name = commandInfo.get(1);
                 boolean wasDeleted = JDBCUtils.deleteProduct(connection, name);
                 if (wasDeleted) {
-                    System.out.println("Product " + name + " has deleted");
+                    if (isPrinting) {
+                        System.out.println("Product " + name + " has deleted");
+                    }
                 }
                 else {
-                    System.out.println("Can't delete");
+                    if (isPrinting) {
+                        System.out.println("Can't delete");
+                    }
                 }
                 break;
             }
@@ -40,12 +50,16 @@ public class Utils {
             case "show_all": {
                 ArrayList<String> products = JDBCUtils.getAllProducts(connection);
                 if (!products.isEmpty()) {
-                    for (String product : products) {
-                        System.out.println(product);
+                    if (isPrinting) {
+                        for (String product : products) {
+                            System.out.println(product);
+                        }
                     }
                 }
                 else {
-                    System.out.println("No products yet");
+                    if (isPrinting) {
+                        System.out.println("No products yet");
+                    }
                 }
 
                 break;
@@ -54,10 +68,12 @@ public class Utils {
             case "price": {
                 String name = commandInfo.get(1);
                 int price = JDBCUtils.getPrice(connection, name);
-                if (price != 0) {
-                    System.out.println(name + " " + price + "$");
-                } else {
-                    System.out.println("No such product");
+                if (isPrinting) {
+                    if (price != 0) {
+                        System.out.println(name + " " + price + "$");
+                    } else {
+                        System.out.println("No such product");
+                    }
                 }
                 break;
             }
@@ -68,15 +84,19 @@ public class Utils {
                     int price = Integer.parseInt(commandInfo.get(2));
 
                     boolean wasUpdated = JDBCUtils.changePrice(connection, name, price);
-                    if (wasUpdated) {
-                        System.out.println("Price of product " + name + " was updated");
-                    }
-                    else {
-                        System.out.println("Can't update");
+                    if (isPrinting) {
+                        if (wasUpdated) {
+                            System.out.println("Price of product " + name + " was updated");
+                        }
+                        else {
+                            System.out.println("Can't update");
+                        }
                     }
                 }
                 else {
-                    System.out.println("Not enough arguments");
+                    if (isPrinting) {
+                        System.out.println("Not enough arguments");
+                    }
                 }
                 break;
             }
@@ -87,18 +107,22 @@ public class Utils {
                     int price2 = Integer.parseInt(commandInfo.get(2));
                     ArrayList<String> filteredProducts = JDBCUtils.filterByPrice(connection, price1, price2);
 
-                    if (!filteredProducts.isEmpty()) {
-                        for (String product : filteredProducts) {
-                            System.out.println(product);
+                    if (isPrinting) {
+                        if (!filteredProducts.isEmpty()) {
+                            for (String product : filteredProducts) {
+                                System.out.println(product);
+                            }
                         }
-                    }
-                    else {
-                        System.out.println("No products by this filter");
+                        else {
+                            System.out.println("No products by this filter");
+                        }
                     }
 
                 }
                 else {
-                    System.out.println("Not enough arguments");
+                    if (isPrinting) {
+                        System.out.println("Not enough arguments");
+                    }
                 }
             }
         }
