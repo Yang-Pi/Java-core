@@ -35,9 +35,7 @@ public class JSONUtils {
     }
 
     private static String parseCommandObject(JSONObject command) {
-        //Get employee object within list
         String sCommand = (String) command.get("commandName");
-        //Get employee first name
         sCommand += " " + (String) command.get("commandInfo");
 
         return sCommand;
