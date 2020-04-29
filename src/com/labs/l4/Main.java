@@ -8,15 +8,14 @@ public class Main {
     static public void main(String[] args) {
         Utils.printInfo();
 
-        try (Connection connection = JDBCUtils.getConnection()){
-            JDBCUtils.clearTable(connection);
-
+        try (Connection connection = JDBCUtils.INSTANCE.getConnection()){
+            JDBCUtils.INSTANCE.clearTable();
+            //Other user
             Thread userThread = new Thread(new User("userImitation.json", connection));
             userThread.setDaemon(true);
             userThread.start();
-
+            //We
             startMainUser(connection);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

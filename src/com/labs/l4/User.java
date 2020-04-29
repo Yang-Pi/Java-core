@@ -6,20 +6,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class User implements Runnable {
-    private String _fileName;
-    private Connection _connection;
+    private final Connection _connection;
+    private ArrayList<String> _commands;
 
     User(final String fileName, Connection connection) {
-        _fileName = fileName;
         _connection = connection;
+        _commands = JSONUtils.parseJson(fileName);
     }
 
     @Override
     public void run() {
         SecureRandom random = new SecureRandom();
 
-        ArrayList<String> commands = JSONUtils.parseJson(_fileName);
-        for (String sCommand : commands) {
+        for (String sCommand : _commands) {
             ArrayList<String> commandInfo = Utils.parseCommand(sCommand);
 
             if (!commandInfo.isEmpty()) {

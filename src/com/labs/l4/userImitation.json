@@ -12,11 +12,11 @@
 		"commandInfo" : "watermelon 8"
 	},
 	{
-		"commandName" : "/delete",
-		"commandInfo" : "apple"
+		"commandName" : "/add",
+		"commandInfo" : "melon 7"
 	},
 	{
-		"commandName" : "/show_all",
-		"commandInfo" : ""
+		"commandName" : "/delete",
+		"commandInfo" : "apple"
 	}
 ]

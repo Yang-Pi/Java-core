@@ -6,14 +6,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Utils {
-    public static void executeCommand(Connection connection, ArrayList<String> commandInfo, boolean isPrinting) throws SQLException {
+    public static void executeCommand(Connection connection, ArrayList<String> commandInfo,
+                                      boolean isPrinting) throws SQLException {
         switch (commandInfo.get(0)) {
             case "add": {
                 if (commandInfo.size() == 3) {
                     String name = commandInfo.get(1);
                     try {
                         int price = Integer.parseInt(commandInfo.get(2));
-                        int currentId = JDBCUtils.addProduct(connection, name, price);
+                        int currentId = JDBCUtils.INSTANCE.addProduct(name, price);
                         if (isPrinting) {
                             System.out.println("Product has added");
                         }
@@ -33,7 +34,7 @@ public class Utils {
 
             case "delete": {
                 String name = commandInfo.get(1);
-                boolean wasDeleted = JDBCUtils.deleteProduct(connection, name);
+                boolean wasDeleted = JDBCUtils.INSTANCE.deleteProduct(name);
                 if (wasDeleted) {
                     if (isPrinting) {
                         System.out.println("Product " + name + " has deleted");
@@ -48,7 +49,7 @@ public class Utils {
             }
 
             case "show_all": {
-                ArrayList<String> products = JDBCUtils.getAllProducts(connection);
+                ArrayList<String> products = JDBCUtils.INSTANCE.getAllProducts();
                 if (!products.isEmpty()) {
                     if (isPrinting) {
                         for (String product : products) {
@@ -67,7 +68,7 @@ public class Utils {
 
             case "price": {
                 String name = commandInfo.get(1);
-                int price = JDBCUtils.getPrice(connection, name);
+                int price = JDBCUtils.INSTANCE.getPrice(name);
                 if (isPrinting) {
                     if (price != 0) {
                         System.out.println(name + " " + price + "$");
@@ -83,7 +84,7 @@ public class Utils {
                     String name = commandInfo.get(1);
                     int price = Integer.parseInt(commandInfo.get(2));
 
-                    boolean wasUpdated = JDBCUtils.changePrice(connection, name, price);
+                    boolean wasUpdated = JDBCUtils.INSTANCE.changePrice(name, price);
                     if (isPrinting) {
                         if (wasUpdated) {
                             System.out.println("Price of product " + name + " was updated");
@@ -105,7 +106,8 @@ public class Utils {
                 if (commandInfo.size() == 3) {
                     int price1 = Integer.parseInt(commandInfo.get(1));
                     int price2 = Integer.parseInt(commandInfo.get(2));
-                    ArrayList<String> filteredProducts = JDBCUtils.filterByPrice(connection, price1, price2);
+                    ArrayList<String> filteredProducts =
+                            JDBCUtils.INSTANCE.filterByPrice(price1, price2);
 
                     if (isPrinting) {
                         if (!filteredProducts.isEmpty()) {
@@ -134,7 +136,8 @@ public class Utils {
 
         if (command.equals("/")) {
             int indexLastParsedChar = line.indexOf(" ");
-            command = line.substring(1, indexLastParsedChar != -1 ? indexLastParsedChar : line.length());
+            command = line.substring(1, indexLastParsedChar != -1 ?
+                    indexLastParsedChar : line.length());
 
             switch (command) {
                 case "add" :
