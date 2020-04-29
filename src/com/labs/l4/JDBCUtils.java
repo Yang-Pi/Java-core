@@ -188,7 +188,7 @@ public class JDBCUtils {
         return _connection;
     }
 
-    private boolean checkDBExistence() {
+    private void checkDBExistence() {
         final String checkQuery = "CREATE TABLE IF NOT EXISTS 'Products' (" +
                 "id INTEGER DEFAULT 1 NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
                 "barcode INTEGER NOT NULL,\n" +
@@ -204,8 +204,6 @@ public class JDBCUtils {
         finally {
             _lock.writeLock().unlock();
         }
-
-        return true;
     }
 
     public void clearTable() throws SQLException {
