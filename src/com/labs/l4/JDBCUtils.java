@@ -126,9 +126,6 @@ public class JDBCUtils {
 
                     res.add(name + " " + sPrice + "$");
                 }
-
-                _lock.readLock().unlock();
-                return res;
             }
         }
         catch (SQLException e) {
