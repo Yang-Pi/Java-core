@@ -1,4 +1,4 @@
-/out
 *.iml
 /.idea
-/products
+/target
+/src/test
