@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Iterable {
+public class    Iterable {
     public static void main(String[] args) {
         List<Integer> list = new LinkedList<>();
         for (int i = 0; i < 10; ++i) {
