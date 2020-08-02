@@ -1,4 +1,4 @@
-package udemyCourse.collections.reflectionAPI;
+package udemyCourse.reflectionAPI;
 
 public class Person {
     private int id;

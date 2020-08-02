@@ -1,4 +1,4 @@
-package udemyCourse.collections.reflectionAPI;
+package udemyCourse.reflectionAPI;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
