@@ -15,3 +15,7 @@
   - SQLite.
 ### Udemy Course - *Продвинутая Java*
 - Collections
+- Multithreading
+- Self Annotations
+- ReflectionAPI
+
